@@ -210,10 +210,14 @@ function About() {
   return <section id="about" className="paper-grid scroll-mt-20 py-24 lg:py-32"><div className="section-wrap grid items-center gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
     <div className="relative mx-auto w-full max-w-[370px]">
       <div className="aspect-[4/5] border border-[hsl(var(--accent)/.7)] bg-[hsl(var(--primary))] p-4">
-        <div className="flex h-full flex-col items-center justify-center border border-[hsl(var(--background)/.22)] text-center text-[hsl(var(--background))]">
-          <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-[hsl(var(--accent))]"><span className="font-display text-3xl text-[hsl(var(--accent))]">S</span></div>
-          <span className="font-mono-custom text-[.62rem] uppercase tracking-[.18em] text-[hsl(var(--background)/.7)]">Portrait placeholder</span>
-          <span className="mt-2 max-w-[190px] text-xs leading-5 text-[hsl(var(--background)/.5)]">A professional photograph may be added here.</span>
+        <div className="relative flex h-full flex-col items-center justify-center overflow-hidden border border-[hsl(var(--background)/.22)] px-6 text-center text-[hsl(var(--background))]">
+          <div className="absolute h-52 w-52 rounded-full border border-[hsl(var(--accent)/.28)]" aria-hidden="true" />
+          <div className="absolute h-36 w-36 rounded-full border border-[hsl(var(--accent)/.18)]" aria-hidden="true" />
+          <div className="relative mb-7 flex h-24 w-24 items-center justify-center border border-[hsl(var(--accent))]">
+            <span className="font-display text-[2.15rem] tracking-[.12em] text-[hsl(var(--accent))]">SHA</span>
+          </div>
+          <span className="relative font-display text-2xl leading-tight sm:text-3xl">Saima Hakak &amp; Associates</span>
+          <span className="relative mt-3 font-mono-custom text-[.58rem] uppercase tracking-[.17em] text-[hsl(var(--background)/.68)]">Advocates &amp; Legal Consultants</span>
         </div>
       </div>
       <div className="absolute -bottom-5 -right-5 hidden bg-[hsl(var(--accent))] px-5 py-4 text-[hsl(var(--primary))] sm:block"><span className="block font-mono-custom text-[.59rem] uppercase tracking-[.14em]">Principal Advocate</span><span className="mt-1 block font-display text-2xl">Adv. Saima Hakak</span></div>
