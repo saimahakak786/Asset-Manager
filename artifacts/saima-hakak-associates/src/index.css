@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: 42 33% 96%;
+  --foreground: 218 32% 18%;
+  --border: 39 19% 84%;
+  --input: 39 19% 84%;
+  --ring: 43 37% 54%;
+  --card: 40 40% 98%;
+  --card-foreground: 218 32% 18%;
+  --primary: 218 39% 18%;
+  --primary-foreground: 42 33% 96%;
+  --secondary: 39 22% 90%;
+  --secondary-foreground: 218 32% 18%;
+  --muted: 39 25% 92%;
+  --muted-foreground: 216 14% 43%;
+  --accent: 43 37% 54%;
+  --accent-foreground: 218 39% 18%;
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-serif: 'Instrument Serif', Georgia, serif;
+  --app-font-mono: 'Space Mono', monospace;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: 218 39% 10%;
+  --foreground: 42 33% 96%;
+  --border: 216 20% 24%;
+  --input: 216 20% 24%;
+  --ring: 43 37% 54%;
+  --card: 218 34% 14%;
+  --card-foreground: 42 33% 96%;
+  --primary: 43 37% 54%;
+  --primary-foreground: 218 39% 10%;
+  --secondary: 216 20% 20%;
+  --secondary-foreground: 42 33% 96%;
+  --muted: 216 20% 20%;
+  --muted-foreground: 216 15% 70%;
+  --accent: 43 37% 54%;
+  --accent-foreground: 218 39% 10%;
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  ::selection { background: hsl(var(--accent) / .3); }
+  :focus-visible { outline: 2px solid hsl(var(--accent)); outline-offset: 3px; }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--app-font-serif); }
+  .font-mono-custom { font-family: var(--app-font-mono); }
+  .eyebrow { font-family: var(--app-font-mono); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: hsl(var(--accent)); }
+  .section-wrap { width: min(1180px, calc(100% - 2.5rem)); margin-inline: auto; }
+  .legal-rule { height: 1px; background: linear-gradient(90deg, hsl(var(--accent)), transparent); }
+  .paper-grid {
+    background-image: linear-gradient(hsl(var(--primary) / .035) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary) / .035) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .animate-rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .animate-rise-delay-1 { animation: rise .7s .12s cubic-bezier(.2,.7,.2,1) both; }
+  .animate-rise-delay-2 { animation: rise .7s .24s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+}

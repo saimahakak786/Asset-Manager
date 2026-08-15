@@ -1,0 +1,742 @@
+Create a complete, professional, premium, modern and highly responsive website for my legal practice.
+
+BUSINESS NAME
+
+SAIMA HAKAK & ASSOCIATES
+
+Subtitle:
+
+Advocates & Legal Consultants
+
+Principal Advocate:
+
+Adv. Saima Hakak
+
+CONTACT DETAILS
+
+Phone: +91 9796552984
+
+WhatsApp: +91 9796552984
+
+Email: advsaima123@gmail.com
+
+Location:
+
+S.K. Colony, Sector-1, Qamarwari, Srinagar, Jammu & Kashmir, India
+
+Consultations:
+
+By prior appointment
+
+---
+
+MAIN GOAL OF THE WEBSITE
+
+The main purpose of this website is to attract genuine potential clients and make it extremely easy for them to contact me.
+
+The website should communicate:
+
+- Professionalism
+- Trust
+- Legal expertise
+- Personal attention
+- Clear communication
+- Confidentiality
+- Easy access to consultation
+
+The design should encourage visitors to call, WhatsApp or submit a consultation enquiry.
+
+However, do NOT use misleading advertising or guarantees.
+
+Do NOT claim:
+
+- Best advocate
+- No. 1 advocate
+- 100% success rate
+- Guaranteed bail
+- Guaranteed case victory
+- Guaranteed result
+- Any fake awards
+- Fake testimonials
+- Fake number of clients
+- Fake case results
+
+---
+
+DESIGN
+
+Create a premium legal-professional design.
+
+Colour palette:
+
+- Deep navy blue
+- White
+- Charcoal/dark grey
+- Subtle muted gold accents
+
+Use elegant typography.
+
+Use serif typography for major headings and a modern sans-serif font for normal text.
+
+The website should feel:
+
+Elegant + Trustworthy + Modern + Professional + Premium
+
+Do not make it look like a generic template.
+
+Avoid excessive use of:
+
+- gavels
+- scales of justice
+- courthouse stock images
+- generic lawyer photographs
+- gold
+- animations
+
+Use subtle legal visual elements.
+
+The design should work beautifully on Android mobile phones, tablets and desktops.
+
+---
+
+NAVIGATION
+
+Create a sticky navigation bar.
+
+Logo:
+
+SAIMA HAKAK & ASSOCIATES
+
+Small text:
+
+Advocates & Legal Consultants
+
+Navigation menu:
+
+- Home
+- About
+- Practice Areas
+- Legal Services
+- Why Choose Us
+- Legal Insights
+- Contact
+
+Add a prominent button:
+
+Book a Consultation
+
+On mobile, use a professional hamburger menu.
+
+---
+
+HOMEPAGE HERO
+
+Create a visually impressive hero section.
+
+Main heading:
+
+Legal Guidance When You Need It Most.
+
+Subheading:
+
+Professional legal consultation, drafting, case preparation and legal assistance tailored to your legal needs.
+
+Supporting text:
+
+Saima Hakak & Associates provides professional legal services across civil, criminal, family, consumer, property, cheque dishonour, bail, NDPS and other legal matters.
+
+Primary button:
+
+Book a Consultation
+
+Secondary button:
+
+Call Now
+
+Also add:
+
+Chat on WhatsApp
+
+The WhatsApp button should open WhatsApp using:
+
++919796552984
+
+with a pre-filled message:
+
+"Hello Adv. Saima Hakak, I would like to discuss a legal matter and request a consultation."
+
+Make the Call, WhatsApp and Consultation buttons highly visible but elegant.
+
+---
+
+QUICK TRUST SECTION
+
+Immediately below the hero section create four professional cards:
+
+Professional Legal Assistance
+
+Clear and practical legal guidance.
+
+Client-Focused Approach
+
+Attention to the facts and circumstances of each matter.
+
+Careful Case Preparation
+
+Structured legal research, drafting and documentation.
+
+Confidential Consultation
+
+Professional handling of client information.
+
+Do not invent statistics or claims.
+
+---
+
+ABOUT
+
+Create an About section titled:
+
+About Adv. Saima Hakak
+
+Use professional wording explaining that Adv. Saima Hakak is a legal professional with experience in litigation, legal drafting, legal research, case management, client coordination and legal proceedings.
+
+Mention professional legal experience accurately without inventing years, awards or case victories.
+
+Create a professional photograph placeholder where I can later upload my own photograph.
+
+Do NOT generate a fake photograph.
+
+Add button:
+
+Read More About Adv. Saima Hakak
+
+---
+
+PRACTICE AREAS
+
+Create an attractive responsive grid of practice-area cards.
+
+Each card should have an elegant icon, title and short explanation.
+
+Include ALL of the following:
+
+Civil Litigation
+
+Civil suits, recovery matters, injunctions, compensation claims and related civil proceedings.
+
+Property & Land Matters
+
+Property disputes, land-related matters, documentation and related legal proceedings.
+
+Criminal Law & Defence
+
+Criminal complaints, criminal defence and related proceedings.
+
+Bail & Anticipatory Bail
+
+Regular bail, anticipatory bail and related applications.
+
+NDPS Matters
+
+Legal assistance in matters arising under narcotics and psychotropic substance laws.
+
+Cheque Dishonour
+
+Section 138 of the Negotiable Instruments Act, cheque dishonour proceedings and related recovery disputes.
+
+Consumer Matters
+
+Consumer complaints, deficiency in service, unfair trade practices and compensation claims.
+
+Family & Matrimonial Matters
+
+Divorce, matrimonial disputes, maintenance and related family proceedings.
+
+Domestic Violence Matters
+
+Legal assistance in proceedings relating to domestic violence and associated legal remedies.
+
+Child Custody & Guardianship
+
+Child custody, guardianship and related family-law proceedings.
+
+Child Rights & Juvenile Justice
+
+Legal assistance concerning child protection and juvenile justice matters.
+
+POCSO-Related Proceedings
+
+Legal assistance in proceedings involving matters under the POCSO framework.
+
+Legal Notices & Replies
+
+Drafting and responding to legal notices and professional legal correspondence.
+
+Legal Drafting
+
+Drafting of plaints, applications, affidavits, petitions, replies and other legal documents.
+
+Legal Consultation & Opinions
+
+Professional legal consultation, issue analysis and legal opinions based on the facts and documents provided.
+
+Agreements & Documentation
+
+Drafting, review and assistance relating to agreements and legal documentation.
+
+Recovery & Compensation Claims
+
+Assistance with recovery claims, compensation matters and related proceedings.
+
+Other Legal & Miscellaneous Matters
+
+Legal assistance for matters that do not fall within the primary categories, subject to consultation and assessment.
+
+IMPORTANT:
+
+Do NOT add Constitutional Law, Writ Practice or High Court practice as established practice areas.
+
+---
+
+CLIENT PROBLEM FINDER
+
+Create an engaging section titled:
+
+What Legal Help Do You Need?
+
+Display attractive clickable options:
+
+- I received a legal notice
+- I need bail
+- I have a cheque dishonour issue
+- I have a property dispute
+- I have a consumer complaint
+- I have a matrimonial/family matter
+- I need a legal document drafted
+- I need legal consultation
+- Other legal matter
+
+When a visitor clicks an option, take them smoothly to the consultation form and automatically select that category in the form.
+
+This section should make it extremely easy for a visitor to identify their problem and contact the advocate.
+
+---
+
+HOW WE HELP
+
+Create a four-step section.
+
+01 — Tell Us About Your Matter
+
+Share the basic details of your legal concern.
+
+02 — Review & Understand
+
+Relevant facts and documents can be reviewed to understand the legal issue.
+
+03 — Understand Your Options
+
+Receive professional guidance regarding possible legal remedies and next steps.
+
+04 — Legal Assistance
+
+Where appropriate, assistance may be provided with consultation, drafting, preparation and legal proceedings.
+
+Do not promise any particular result.
+
+---
+
+WHY CHOOSE US
+
+Create a premium section:
+
+A Professional Approach to Every Legal Matter
+
+Include:
+
+Clear Communication
+
+Legal issues explained in understandable language.
+
+Attention to Detail
+
+Careful consideration of facts, documents and applicable law.
+
+Strategic Preparation
+
+Structured preparation for legal drafting and proceedings.
+
+Professionalism
+
+Respectful, confidential and client-focused communication.
+
+Personal Attention
+
+Every legal matter deserves individual assessment.
+
+---
+
+LEGAL SERVICES
+
+Create a separate section containing:
+
+- Legal Consultation
+- Legal Opinions
+- Legal Notices
+- Replies to Legal Notices
+- Plaint Drafting
+- Written Statements
+- Applications
+- Affidavits
+- Agreements
+- Document Review
+- Case Preparation
+- Legal Research
+- Litigation Support
+- Recovery & Compensation Matters
+
+Make each service visually attractive.
+
+---
+
+CONSULTATION CALL-TO-ACTION
+
+Create a strong section before the footer.
+
+Heading:
+
+Have a Legal Concern?
+
+Text:
+
+Taking the right legal step often begins with understanding your options. Contact Saima Hakak & Associates to discuss your legal matter and request a consultation.
+
+Buttons:
+
+Book a Consultation
+
+Call Now
+
+WhatsApp Us
+
+Small text:
+
+Consultations by prior appointment.
+
+---
+
+CONSULTATION FORM
+
+Create a professional enquiry form.
+
+Fields:
+
+- Full Name
+- Phone Number
+- Email Address
+- Type of Legal Matter
+- Brief Description of Matter
+- Preferred Contact Method
+
+Type of Legal Matter dropdown:
+
+- Civil Matter
+- Criminal Matter
+- Bail / Anticipatory Bail
+- NDPS Matter
+- Cheque Dishonour
+- Consumer Matter
+- Property / Land
+- Family / Matrimonial
+- Domestic Violence
+- Child Custody / Guardianship
+- Child Rights / Juvenile Justice
+- Legal Notice
+- Legal Drafting
+- Legal Consultation
+- Other
+
+Submit button:
+
+Request a Consultation
+
+After submission display:
+
+Thank you. Your enquiry has been received. We will contact you regarding your request.
+
+Do not state that submitting the form automatically creates an advocate-client relationship.
+
+Add a notice:
+
+Please do not submit confidential or highly sensitive documents through this initial enquiry form. Detailed documents can be discussed or shared through an appropriate channel after consultation.
+
+---
+
+CONTACT SECTION
+
+Create a beautiful Contact page/section.
+
+Heading:
+
+Contact Saima Hakak & Associates
+
+Display:
+
+Adv. Saima Hakak
+
+Phone: +91 9796552984
+
+WhatsApp: +91 9796552984
+
+Email: advsaima123@gmail.com
+
+Location: S.K. Colony, Sector-1, Qamarwari, Srinagar, Jammu & Kashmir, India
+
+Consultations: By prior appointment
+
+Buttons:
+
+Call Now
+
+WhatsApp
+
+Email Us
+
+Get Directions
+
+Use:
+
+tel:+919796552984
+
+for the call button.
+
+Use:
+
+mailto:advsaima123@gmail.com
+
+for the email button.
+
+Do not invent an exact office building or office number.
+
+---
+
+LEGAL INSIGHTS / BLOG
+
+Create a professional section:
+
+Legal Insights & Updates
+
+Create a structure where I can later publish articles.
+
+Use these as sample draft titles only:
+
+- What to Do After Receiving a Legal Notice
+- Understanding Cheque Dishonour Proceedings
+- What Is Anticipatory Bail?
+- Understanding Consumer Rights
+- Important Considerations Before Filing a Civil Suit
+- Understanding Maintenance Proceedings
+- What to Know Before Entering Into a Legal Agreement
+
+Clearly treat these as sample/placeholder articles unless actual content is added.
+
+Create an attractive article-card design.
+
+---
+
+FOOTER
+
+Create a premium footer containing:
+
+SAIMA HAKAK & ASSOCIATES
+
+Advocates & Legal Consultants
+
+Short description:
+
+Professional legal consultation, drafting and legal services with a client-focused approach.
+
+Contact details.
+
+Quick links.
+
+Practice Areas.
+
+Add:
+
+© 2026 Saima Hakak & Associates. All Rights Reserved.
+
+Links:
+
+- Privacy Policy
+- Terms of Use
+- Disclaimer
+
+---
+
+DISCLAIMER
+
+Create a dedicated Disclaimer page.
+
+Use professional wording:
+
+"The information provided on this website is intended for general informational purposes only and should not be construed as legal advice. Viewing or using this website, submitting an enquiry, or communicating through this website does not by itself create an advocate-client relationship. Legal advice depends on the specific facts and circumstances of each matter. No outcome or result is guaranteed."
+
+---
+
+PRIVACY POLICY
+
+Create a basic Privacy Policy page explaining how enquiry information may be used to respond to consultation requests.
+
+Do not collect unnecessary sensitive information.
+
+---
+
+MOBILE EXPERIENCE
+
+The website must be extremely good on Android phones.
+
+Ensure:
+
+- No horizontal scrolling
+- Large readable text
+- Easy-to-tap buttons
+- Responsive cards
+- Mobile navigation
+- Fast loading
+- Forms work properly
+- Contact information is easy to find
+
+Add a subtle mobile sticky contact bar:
+
+Call | WhatsApp | Consultation
+
+---
+
+SEO
+
+Optimize the website for searches related to legal services in Srinagar and Jammu & Kashmir.
+
+SEO title:
+
+Saima Hakak & Associates | Advocates & Legal Consultants in Srinagar
+
+Meta description:
+
+Saima Hakak & Associates provides professional legal consultation, drafting and legal services in Srinagar, Jammu & Kashmir, including civil, criminal, bail, consumer, property, family, cheque dishonour and other legal matters.
+
+Use natural SEO terms such as:
+
+- Advocate in Srinagar
+- Legal services in Srinagar
+- Lawyer in Srinagar
+- Civil lawyer
+- Criminal lawyer
+- Bail lawyer
+- Consumer cases
+- Cheque dishonour
+- Property disputes
+- Family and matrimonial matters
+- Legal notices
+
+Do not keyword-stuff.
+
+Create:
+
+- sitemap.xml
+- robots.txt
+- favicon
+- Open Graph metadata
+- proper page titles
+- meta descriptions
+- accessible image alt text
+
+---
+
+ACCESSIBILITY
+
+Ensure:
+
+- Proper colour contrast
+- Keyboard navigation
+- Visible focus states
+- Proper form labels
+- Semantic HTML
+- Accessible buttons
+- Alt text for images
+
+---
+
+ANIMATIONS
+
+Use subtle professional animations:
+
+- Fade-in
+- Smooth scrolling
+- Gentle card hover
+- Button hover
+- Subtle page transitions
+
+Do not use flashy animations.
+
+---
+
+TECHNICAL REQUIREMENTS
+
+Use a modern, maintainable web architecture.
+
+Use reusable components.
+
+Ensure:
+
+- Every navigation link works
+- Every button works
+- Call button works
+- WhatsApp button works
+- Email button works
+- Consultation form works
+- Mobile menu works
+- No broken links
+- No console errors
+
+Keep the code clean and easy to modify later.
+
+---
+
+IMPORTANT PROFESSIONAL ACCURACY
+
+Never invent information about Adv. Saima Hakak.
+
+Do NOT invent:
+
+- Awards
+- Rankings
+- Bar memberships
+- Client testimonials
+- Number of clients
+- Case victories
+- Success percentage
+- Years of experience
+- Team members
+- Office branches
+- Qualifications not supplied
+- High Court expertise
+- Constitutional/writ expertise
+- Guaranteed outcomes
+
+Do not create fake testimonials.
+
+---
+
+FINAL OBJECTIVE
+
+Build the website around this visitor journey:
+
+Legal Problem → Find Relevant Service → Build Trust → Request Consultation → Call/WhatsApp
+
+The visitor should never have to search hard for how to contact Adv. Saima Hakak.
+
+Make the final result look like a genuine premium professional legal practice website, not an AI-generated template.
+
+Before finishing, test the entire website on desktop and mobile, fix all visual problems, broken links, buttons, forms and console errors, and ensure all provided contact information is exactly correct.

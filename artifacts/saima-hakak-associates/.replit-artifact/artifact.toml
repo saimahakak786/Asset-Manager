@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Saima Hakak & Associates"
+description = "A premium, responsive website for Saima Hakak & Associates, Advocates & Legal Consultants in Srinagar. Helps visitors understand legal services, find the right practice area, and request a consultation by phone, WhatsApp, email, or enquiry form."
+version = "1.0.0"
+id = "artifacts/saima-hakak-associates"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18437
+
+[services.development]
+run = "pnpm --filter @workspace/saima-hakak-associates run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/saima-hakak-associates", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/saima-hakak-associates/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18437"
+BASE_PATH = "/"
