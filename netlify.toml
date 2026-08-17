@@ -1,0 +1,8 @@
+[build]
+  command = "pnpm --filter @workspace/saima-hakak-associates... run build"
+  publish = "artifacts/saima-hakak-associates/dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
