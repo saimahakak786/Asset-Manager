@@ -26,9 +26,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: |
-          pnpm install --no-frozen-lockfile
-          pnpm approve-builds --all
+        run: pnpm install --no-frozen-lockfile && pnpm approve-builds --all
 
       - name: Build project
         run: pnpm --filter @workspace/saima-hakak-associates... run build
