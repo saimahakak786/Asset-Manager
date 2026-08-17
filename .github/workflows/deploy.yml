@@ -3,9 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+
 permissions:
   contents: write
-
 
 jobs:
   build-and-deploy:
@@ -26,9 +26,9 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --allow-build=esbuild
-
-     
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm approve-builds --all
 
       - name: Build project
         run: pnpm --filter @workspace/saima-hakak-associates... run build
