@@ -20,7 +20,7 @@ import {
   Menu,
   MessageCircle,
   Phone,
-plp  Scale,
+  Scale,
   Search,
   Send,
   ShieldCheck,
@@ -33,7 +33,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import '@/index.css';
 
-constlxla queryClient = new QueryClient();
+const queryClient = new QueryClient();
 const phone = '+919796552984';
 const displayPhone = '+91 9796552984';
 const whatsappMessage = 'Hello Adv. Saima Hakak, I would like to discuss a legal matter and request a consultation.';
@@ -81,7 +81,7 @@ const problemOptions = [
 
 const services = ['Legal Consultation', 'Legal Opinions', 'Legal Notices', 'Replies to Legal Notices', 'Plaint Drafting', 'Written Statements', 'Applications', 'Affidavits', 'Agreements', 'Document Review', 'Case Preparation', 'Legal Research', 'Litigation Support', 'Recovery & Compensation Matters'];
 
-const insights = [hc
+const insights = [
   ['01', 'What to Do After Receiving a Legal Notice', 'A sample starting point for understanding the first practical steps after a notice arrives.'],
   ['02', 'Understanding Cheque Dishonour Proceedings', 'A sample overview of the documents and timelines commonly relevant to a cheque matter.'],
   ['03', 'What Is Anticipatory Bail?', 'A sample explainer on the purpose of anticipatory bail and when to seek legal guidance.'],
