@@ -61,7 +61,7 @@ const practiceAreas = [
 ] as const;
 
 const matterOptions = [
-  'Civil Matter', 'Criminal Matter', 'Bail / Anticipatory Bail', 'NDPS Matter', 'Cheque Dishonour',o
+  'Civil Matter', 'Criminal Matter', 'Bail / Anticipatory Bail', 'NDPS Matter', 'Cheque Dishonour',
   'Consumer Matter', 'Property / Land', 'Family / Matrimonial', 'Domestic Violence',
   'Child Custody / Guardianship', 'Child Rights / Juvenile Justice', 'Legal Notice',
   'Legal Drafting', 'Legal Consultation', 'Other',
