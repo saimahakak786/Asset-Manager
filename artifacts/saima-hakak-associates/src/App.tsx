@@ -20,7 +20,7 @@ import {
   Menu,
   MessageCircle,
   Phone,
-  Scale,
+plp  Scale,
   Search,
   Send,
   ShieldCheck,
@@ -33,7 +33,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import '@/index.css';
 
-const queryClient = new QueryClient();
+constlxla queryClient = new QueryClient();
 const phone = '+919796552984';
 const displayPhone = '+91 9796552984';
 const whatsappMessage = 'Hello Adv. Saima Hakak, I would like to discuss a legal matter and request a consultation.';
@@ -61,7 +61,7 @@ const practiceAreas = [
 ] as const;
 
 const matterOptions = [
-  'Civil Matter', 'Criminal Matter', 'Bail / Anticipatory Bail', 'NDPS Matter', 'Cheque Dishonour',
+  'Civil Matter', 'Criminal Matter', 'Bail / Anticipatory Bail', 'NDPS Matter', 'Cheque Dishonour',o
   'Consumer Matter', 'Property / Land', 'Family / Matrimonial', 'Domestic Violence',
   'Child Custody / Guardianship', 'Child Rights / Juvenile Justice', 'Legal Notice',
   'Legal Drafting', 'Legal Consultation', 'Other',
@@ -81,7 +81,7 @@ const problemOptions = [
 
 const services = ['Legal Consultation', 'Legal Opinions', 'Legal Notices', 'Replies to Legal Notices', 'Plaint Drafting', 'Written Statements', 'Applications', 'Affidavits', 'Agreements', 'Document Review', 'Case Preparation', 'Legal Research', 'Litigation Support', 'Recovery & Compensation Matters'];
 
-const insights = [
+const insights = [hc
   ['01', 'What to Do After Receiving a Legal Notice', 'A sample starting point for understanding the first practical steps after a notice arrives.'],
   ['02', 'Understanding Cheque Dishonour Proceedings', 'A sample overview of the documents and timelines commonly relevant to a cheque matter.'],
   ['03', 'What Is Anticipatory Bail?', 'A sample explainer on the purpose of anticipatory bail and when to seek legal guidance.'],
@@ -171,7 +171,8 @@ function ContactActions({ compact = false }: { compact?: boolean }) {
 function Header() {
   const [open, setOpen] = useState(false);
   const links = [['About', '#about'], ['Practice Areas', '#practice'], ['Legal Services', '#services'], ['Why Choose Us', '#why'], ['Legal Insights', '#insights'], ['Contact', '#contact']];
-  const getSectionHref = (href: string) => window.location.pathname === '/' ? href : `/${href}`;
+  const getSectionHref = (href: string) => `#${href.replace('#', '')}`;
+
   const closeMenu = () => setOpen(false);
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-[hsl(var(--border)/.65)] bg-[hsl(var(--background)/.92)] backdrop-blur-xl">
