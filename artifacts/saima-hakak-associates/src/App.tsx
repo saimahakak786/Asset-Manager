@@ -121,11 +121,6 @@ function getEnquiryWhatsAppUrl(details: EnquiryDetails) {
   return `https://wa.me/${phone}?text=${encodeURIComponent(getEnquiryMessage(details))}`;
 }
 
-function getEnquiryEmailUrl(details: EnquiryDetails) {
-  const subject = `Consultation enquiry — ${details.matter}`;
-  return `mailto:advsaima123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(getEnquiryMessage(details))}`;
-}
-
 function usePageMeta(title: string, description: string) {
   useEffect(() => {
     document.title = title;
@@ -289,22 +284,61 @@ function Insights() {
 function ConsultationForm({ selectedMatter, onSubmitted }: { selectedMatter: string; onSubmitted: (details: EnquiryDetails) => void }) {
   const [form, setForm] = useState({ name: '', phone: '', email: '', matter: selectedMatter || '', description: '', contact: 'Phone' });
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   useEffect(() => { if (selectedMatter) setForm((current) => ({ ...current, matter: selectedMatter })); }, [selectedMatter]);
   const update = (key: keyof typeof form, value: string) => setForm((current) => ({ ...current, [key]: value }));
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!form.name.trim() || !form.phone.trim() || !form.matter || !form.description.trim()) { setError('Please complete your name, phone number, matter and a brief description.'); return; }
+    if (!form.name.trim() || !form.phone.trim() || !form.matter || !form.description.trim()) { 
+      setError('Please complete your name, phone number, matter and a brief description.'); 
+      return; 
+    }
     setError('');
-    onSubmitted({
-      name: form.name.trim(),
-      phone: form.phone.trim(),
-      email: form.email.trim(),
-      matter: form.matter,
-      description: form.description.trim(),
-      contact: form.contact,
-    });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: '52dedc2a-f1dc-48b3-b696-3395a936bd8f',
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim(),
+          matter: form.matter,
+          contact_preference: form.contact,
+          message: form.description.trim(),
+          subject: `New Legal Consultation Enquiry: ${form.matter}`
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        onSubmitted({
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim(),
+          matter: form.matter,
+          description: form.description.trim(),
+          contact: form.contact,
+        });
+      } else {
+        setError('Failed to submit form. Please try again or reach out on WhatsApp.');
+      }
+    } catch (err) {
+      setError('Network error occurred. Please try again or reach out directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-  return <section id="consultation" className="scroll-mt-20 bg-[hsl(var(--primary))] py-24 text-[hsl(var(--background))] lg:py-32"><div className="section-wrap grid gap-14 lg:grid-cols-[.75fr_1.25fr] lg:gap-24"><div><SectionLabel>Private first conversation</SectionLabel><h2 className="font-display text-5xl leading-[.95] md:text-7xl">Request a<br /><em className="text-[hsl(var(--accent))]">consultation.</em></h2><p className="mt-7 max-w-sm text-sm leading-6 text-[hsl(var(--background)/.62)]">Tell us a little about your legal concern. Consultations are by prior appointment.</p><div className="mt-10 border-l border-[hsl(var(--accent))] pl-5 text-xs leading-6 text-[hsl(var(--background)/.58)]"><LockKeyhole size={16} className="mb-2 text-[hsl(var(--accent))]" />Please do not submit confidential or highly sensitive documents through this initial enquiry form. Detailed documents can be discussed or shared through an appropriate channel after consultation.</div></div><div className="bg-[hsl(var(--background))] p-6 text-[hsl(var(--primary))] sm:p-9">{form.matter && <div className="mb-6 flex items-center gap-2 border border-[hsl(var(--accent)/.5)] bg-[hsl(var(--accent)/.13)] px-4 py-3 text-xs"><Check size={15} className="text-[hsl(var(--accent))]" /> Matter selected: <strong>{form.matter}</strong></div>}<form onSubmit={submit} className="space-y-5" noValidate><div className="grid gap-5 sm:grid-cols-2"><label className="text-xs font-bold">Full Name *<input value={form.name} onChange={(e) => update('name', e.target.value)} className="mt-2 min-h-12 w-full border border-[hsl(var(--border))] bg-transparent px-3 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="input-full-name" /></label><label className="text-xs font-bold">Phone Number *<input type="tel" value={form.phone} onChange={(e) => update('phone', e.target.value)} className="mt-2 min-h-12 w-full border border-[hsl(var(--border))] bg-transparent px-3 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="input-phone" /></label></div><div className="grid gap-5 sm:grid-cols-2"><label className="text-xs font-bold">Email Address<input type="email" value={form.email} onChange={(e) => update('email', e.target.value)} className="mt-2 min-h-12 w-full border border-[hsl(var(--border))] bg-transparent px-3 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="input-email" /></label><label className="text-xs font-bold">Type of Legal Matter *<span className="relative mt-2 block"><select value={form.matter} onChange={(e) => update('matter', e.target.value)} className="min-h-12 w-full appearance-none border border-[hsl(var(--border))] bg-[hsl(var(--background))] px-3 pr-9 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="select-legal-matter"><option value="">Select a matter</option>{matterOptions.map((matter) => <option key={matter} value={matter}>{matter}</option>)}</select><ChevronDown size={15} className="pointer-events-none absolute right-3 top-4" /></span></label></div><label className="block text-xs font-bold">Brief Description of Matter *<textarea value={form.description} onChange={(e) => update('description', e.target.value)} rows={5} placeholder="Share a short, non-confidential summary..." className="mt-2 w-full resize-y border border-[hsl(var(--border))] bg-transparent px-3 py-3 text-sm outline-none transition placeholder:text-[hsl(var(--muted-foreground))] focus:border-[hsl(var(--accent))]" data-testid="textarea-description" /></label><fieldset><legend className="text-xs font-bold">Preferred Contact Method</legend><div className="mt-3 flex flex-wrap gap-3">{['Phone', 'WhatsApp', 'Email'].map((option) => <label key={option} className="flex cursor-pointer items-center gap-2 text-sm"><input type="radio" name="contact" value={option} checked={form.contact === option} onChange={(e) => update('contact', e.target.value)} className="accent-[hsl(var(--accent))]" data-testid={`radio-contact-${option.toLowerCase()}`} />{option}</label>)}</div></fieldset>{error && <p className="border-l-2 border-red-700 px-3 py-2 text-xs text-red-800" role="alert" data-testid="status-form-error">{error}</p>}<button type="submit" className="inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[hsl(var(--primary))] px-5 text-sm font-bold text-[hsl(var(--background))] transition hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--primary))]" data-testid="button-submit-consultation">Request a Consultation <Send size={15} /></button><p className="text-center text-[.67rem] leading-5 text-[hsl(var(--muted-foreground))]">Submitting an enquiry does not by itself create an advocate-client relationship.</p></form></div></div></section>;
+
+  return <section id="consultation" className="scroll-mt-20 bg-[hsl(var(--primary))] py-24 text-[hsl(var(--background))] lg:py-32"><div className="section-wrap grid gap-14 lg:grid-cols-[.75fr_1.25fr] lg:gap-24"><div><SectionLabel>Private first conversation</SectionLabel><h2 className="font-display text-5xl leading-[.95] md:text-7xl">Request a<br /><em className="text-[hsl(var(--accent))]">consultation.</em></h2><p className="mt-7 max-w-sm text-sm leading-6 text-[hsl(var(--background)/.62)]">Tell us a little about your legal concern. Consultations are by prior appointment.</p><div className="mt-10 border-l border-[hsl(var(--accent))] pl-5 text-xs leading-6 text-[hsl(var(--background)/.58)]"><LockKeyhole size={16} className="mb-2 text-[hsl(var(--accent))]" />Please do not submit confidential or highly sensitive documents through this initial enquiry form. Detailed documents can be discussed or shared through an appropriate channel after consultation.</div></div><div className="bg-[hsl(var(--background))] p-6 text-[hsl(var(--primary))] sm:p-9">{form.matter && <div className="mb-6 flex items-center gap-2 border border-[hsl(var(--accent)/.5)] bg-[hsl(var(--accent)/.13)] px-4 py-3 text-xs"><Check size={15} className="text-[hsl(var(--accent))]" /> Matter selected: <strong>{form.matter}</strong></div>}<form onSubmit={submit} className="space-y-5" noValidate><div className="grid gap-5 sm:grid-cols-2"><label className="text-xs font-bold">Full Name *<input value={form.name} onChange={(e) => update('name', e.target.value)} className="mt-2 min-h-12 w-full border border-[hsl(var(--border))] bg-transparent px-3 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="input-full-name" /></label><label className="text-xs font-bold">Phone Number *<input type="tel" value={form.phone} onChange={(e) => update('phone', e.target.value)} className="mt-2 min-h-12 w-full border border-[hsl(var(--border))] bg-transparent px-3 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="input-phone" /></label></div><div className="grid gap-5 sm:grid-cols-2"><label className="text-xs font-bold">Email Address<input type="email" value={form.email} onChange={(e) => update('email', e.target.value)} className="mt-2 min-h-12 w-full border border-[hsl(var(--border))] bg-transparent px-3 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="input-email" /></label><label className="text-xs font-bold">Type of Legal Matter *<span className="relative mt-2 block"><select value={form.matter} onChange={(e) => update('matter', e.target.value)} className="min-h-12 w-full appearance-none border border-[hsl(var(--border))] bg-[hsl(var(--background))] px-3 pr-9 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="select-legal-matter"><option value="">Select a matter</option>{matterOptions.map((matter) => <option key={matter} value={matter}>{matter}</option>)}</select><ChevronDown size={15} className="pointer-events-none absolute right-3 top-4" /></span></label></div><label className="block text-xs font-bold">Brief Description of Matter *<textarea value={form.description} onChange={(e) => update('description', e.target.value)} rows={5} placeholder="Share a short, non-confidential summary..." className="mt-2 w-full resize-y border border-[hsl(var(--border))] bg-transparent px-3 py-3 text-sm outline-none transition placeholder:text-[hsl(var(--muted-foreground))] focus:border-[hsl(var(--accent))]" data-testid="textarea-description" /></label><fieldset><legend className="text-xs font-bold">Preferred Contact Method</legend><div className="mt-3 flex flex-wrap gap-3">{['Phone', 'WhatsApp', 'Email'].map((option) => <label key={option} className="flex cursor-pointer items-center gap-2 text-sm"><input type="radio" name="contact" value={option} checked={form.contact === option} onChange={(e) => update('contact', e.target.value)} className="accent-[hsl(var(--accent))]" data-testid={`radio-contact-${option.toLowerCase()}`} />{option}</label>)}</div></fieldset>{error && <p className="border-l-2 border-red-700 px-3 py-2 text-xs text-red-800" role="alert" data-testid="status-form-error">{error}</p>}<button type="submit" disabled={isSubmitting} className="inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[hsl(var(--primary))] px-5 text-sm font-bold text-[hsl(var(--background))] transition hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--primary))] disabled:opacity-50" data-testid="button-submit-consultation">{isSubmitting ? 'Submitting...' : 'Request a Consultation'} <Send size={15} /></button><p className="text-center text-[.67rem] leading-5 text-[hsl(var(--muted-foreground))]">Submitting an enquiry does not by itself create an advocate-client relationship.</p></form></div></div></section>;
 }
 
 function Contact() {
@@ -328,7 +362,7 @@ function Home() {
   const [submitted, setSubmitted] = useState(false);
   usePageMeta('Saima Hakak & Associates | Advocates & Legal Consultants in Srinagar', 'Saima Hakak & Associates provides professional legal consultation, drafting and legal services in Srinagar, Jammu & Kashmir, including civil, criminal, bail, consumer, property, family, cheque dishonour and other legal matters.');
   const selectMatter = (matter: string) => { setSelectedMatter(matter); setSubmitted(false); document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth' }); };
-  return <><Header /><main><Hero /><TrustStrip /><About /><PracticeAreas /><ProblemFinder onSelect={selectMatter} /><HowWeHelp /><WhyChooseUs /><Services /><Insights /><section className="bg-[hsl(var(--accent))] py-20 text-[hsl(var(--primary))]"><div className="section-wrap flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><SectionLabel>Take the next step</SectionLabel><h2 className="max-w-xl font-display text-5xl leading-none md:text-7xl">Have a legal<br /><em>concern?</em></h2><p className="mt-5 max-w-md text-sm leading-6 text-[hsl(var(--primary)/.72)]">Taking the right legal step often begins with understanding your options. Contact Saima Hakak &amp; Associates to discuss your legal matter and request a consultation.</p></div><div className="flex flex-wrap gap-3"><a href="#consultation" className="inline-flex min-h-12 items-center gap-2 bg-[hsl(var(--primary))] px-6 text-sm font-bold text-[hsl(var(--background))]" data-testid="link-cta-consultation">Book a Consultation <ArrowRight size={16} /></a><ContactActions compact /></div></div></section>{submitted ? <section id="consultation" className="scroll-mt-20 bg-[hsl(var(--primary))] py-20"><div className="section-wrap"><ConsultationConfirmation /></div></section> : <ConsultationForm selectedMatter={selectedMatter} onSubmitted={() => setSubmitted(true)} />}<Contact /></main><Footer /><MobileBar /></>;
+  return <><Header /><main><Hero /><TrustStrip /><About /><PracticeAreas /><ProblemFinder onSelect={selectMatter} /><HowWeHelp /><WhyChooseUs /><Services /><Insights /><section className="bg-[hsl(var(--accent))] py-20 text-[hsl(var(--primary))]"><div className="section-wrap flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><SectionLabel>Take the next step</SectionLabel><h2 className="max-w-xl font-display text-5xl leading-none md:text-7xl">Have a legal<br /><em>concern?</em></h2><p className="mt-5 max-w-md text-sm leading-6 text-[hsl(var(--primary)/.72)]">Taking the right legal step often begins with understanding your options. Contact Saima Hakak &amp; Associates to discuss your legal matter and request a consultation.</p></div><div className="flex flex-wrap gap-3"><a href="#consultation" className="inline-flex min-h-12 items-center gap-2 bg-[hsl(var(--primary))] px-6 text-sm font-bold text-[hsl(var(--background))]" data-testid="link-cta-consultation">Book a Consultation <ArrowRight size={16} /></a><ContactActions compact /></div></div></section>{submitted ? <section id="consultation" className="scroll-mt-20 bg-[hsl(var(--primary))] py-20"><div className="section-wrap"><ConsultationConfirmation /></div></section> : <ConsultationForm selectedMatter={selectedMatter} onSubmitted={(details) => { setSubmitted(true); window.open(getEnquiryWhatsAppUrl(details), '_blank'); }} />}<Contact /></main><Footer /><MobileBar /></>;
 }
 
 function LegalPage({ kind }: { kind: 'privacy' | 'disclaimer' }) {
