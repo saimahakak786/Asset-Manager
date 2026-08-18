@@ -91,6 +91,41 @@ const insights = [
   ['07', 'What to Know Before Entering Into a Legal Agreement', 'A sample note on reviewing obligations, definitions and practical consequences.'],
 ];
 
+type EnquiryDetails = {
+  name: string;
+  phone: string;
+  email: string;
+  matter: string;
+  description: string;
+  contact: string;
+};
+
+function getEnquiryMessage(details: EnquiryDetails) {
+  return [
+    'Hello Adv. Saima Hakak,',
+    '',
+    'I would like to request a legal consultation.',
+    '',
+    `Name: ${details.name}`,
+    `Phone: ${details.phone}`,
+    `Email: ${details.email || 'Not provided'}`,
+    `Matter: ${details.matter}`,
+    `Preferred contact: ${details.contact}`,
+    '',
+    'Brief description:',
+    details.description,
+  ].join('\n');
+}
+
+function getEnquiryWhatsAppUrl(details: EnquiryDetails) {
+  return `https://wa.me/${phone}?text=${encodeURIComponent(getEnquiryMessage(details))}`;
+}
+
+function getEnquiryEmailUrl(details: EnquiryDetails) {
+  const subject = `Consultation enquiry — ${details.matter}`;
+  return `mailto:advsaima123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(getEnquiryMessage(details))}`;
+}
+
 function usePageMeta(title: string, description: string) {
   useEffect(() => {
     document.title = title;
@@ -136,18 +171,16 @@ function ContactActions({ compact = false }: { compact?: boolean }) {
 function Header() {
   const [open, setOpen] = useState(false);
   const links = [['About', '#about'], ['Practice Areas', '#practice'], ['Legal Services', '#services'], ['Why Choose Us', '#why'], ['Legal Insights', '#insights'], ['Contact', '#contact']];
-  const jump = (href: string) => {
-    setOpen(false);
-    if (window.location.pathname !== '/') window.location.href = `/${href}`;
-  };
+  const getSectionHref = (href: string) => window.location.pathname === '/' ? href : `/${href}`;
+  const closeMenu = () => setOpen(false);
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-[hsl(var(--border)/.65)] bg-[hsl(var(--background)/.92)] backdrop-blur-xl">
       <div className="section-wrap flex h-[74px] items-center justify-between gap-4">
         <Brand />
         <nav className="hidden items-center gap-5 lg:flex" aria-label="Primary navigation">
-          {links.map(([label, href]) => <a key={href} href={href} onClick={() => jump(href)} className="text-[.71rem] font-semibold tracking-[.02em] text-[hsl(var(--muted-foreground))] transition hover:text-[hsl(var(--primary))]" data-testid={`link-nav-${label.toLowerCase().replaceAll(' ', '-')}`}>{label}</a>)}
+          {links.map(([label, href]) => <a key={href} href={getSectionHref(href)} onClick={closeMenu} className="text-[.71rem] font-semibold tracking-[.02em] text-[hsl(var(--muted-foreground))] transition hover:text-[hsl(var(--primary))]" data-testid={`link-nav-${label.toLowerCase().replaceAll(' ', '-')}`}>{label}</a>)}
         </nav>
-        <a href="#consultation" onClick={() => jump('#consultation')} className="hidden min-h-10 items-center gap-2 bg-[hsl(var(--primary))] px-4 text-xs font-semibold text-[hsl(var(--background))] transition hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--primary))] md:inline-flex" data-testid="link-header-consultation">
+        <a href={getSectionHref('#consultation')} onClick={closeMenu} className="hidden min-h-10 items-center gap-2 bg-[hsl(var(--primary))] px-4 text-xs font-semibold text-[hsl(var(--background))] transition hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--primary))] md:inline-flex" data-testid="link-header-consultation">
           Book a Consultation <ArrowRight size={14} />
         </a>
         <button type="button" className="inline-flex h-11 w-11 items-center justify-center text-[hsl(var(--primary))] lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} data-testid="button-mobile-menu">
@@ -156,8 +189,8 @@ function Header() {
       </div>
       {open && <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--background))] px-5 pb-5 lg:hidden">
         <nav className="section-wrap flex flex-col gap-1 pt-3" aria-label="Mobile navigation">
-          {links.map(([label, href]) => <a key={href} href={href} onClick={() => jump(href)} className="border-b border-[hsl(var(--border)/.65)] py-3 text-sm font-semibold text-[hsl(var(--primary))]" data-testid={`link-mobile-${label.toLowerCase().replaceAll(' ', '-')}`}>{label}</a>)}
-          <a href="#consultation" onClick={() => jump('#consultation')} className="mt-3 flex min-h-11 items-center justify-center bg-[hsl(var(--primary))] text-sm font-semibold text-[hsl(var(--background))]" data-testid="link-mobile-consultation">Book a Consultation</a>
+          {links.map(([label, href]) => <a key={href} href={getSectionHref(href)} onClick={closeMenu} className="border-b border-[hsl(var(--border)/.65)] py-3 text-sm font-semibold text-[hsl(var(--primary))]" data-testid={`link-mobile-${label.toLowerCase().replaceAll(' ', '-')}`}>{label}</a>)}
+          <a href={getSectionHref('#consultation')} onClick={closeMenu} className="mt-3 flex min-h-11 items-center justify-center bg-[hsl(var(--primary))] text-sm font-semibold text-[hsl(var(--background))]" data-testid="link-mobile-consultation">Book a Consultation</a>
         </nav>
       </div>}
     </header>
@@ -252,7 +285,7 @@ function Insights() {
   return <section id="insights" className="scroll-mt-20 border-t border-[hsl(var(--border))] bg-[hsl(var(--secondary))] py-24 lg:py-32"><div className="section-wrap"><div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><SectionLabel>Sample content</SectionLabel><h2 className="font-display text-5xl leading-none md:text-7xl">Legal insights<br /><em className="text-[hsl(var(--accent))]">&amp; updates.</em></h2></div><p className="max-w-xs text-xs leading-5 text-[hsl(var(--muted-foreground))]">Sample / placeholder titles for future articles. Legal information is general and not a substitute for advice on a specific matter.</p></div><div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">{insights.map(([num, title, text], index) => <article key={title} className={`group flex min-h-[240px] flex-col border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6 transition hover:-translate-y-1 hover:border-[hsl(var(--accent))] ${index === 0 ? 'lg:col-span-2' : ''}`} data-testid={`card-insight-${index}`}><span className="font-mono-custom text-[.63rem] text-[hsl(var(--accent))]">{num} / SAMPLE</span><h3 className="mt-auto font-display text-[1.65rem] leading-[.95]">{title}</h3><p className="mt-3 text-xs leading-5 text-[hsl(var(--muted-foreground))]">{text}</p><span className="mt-5 inline-flex items-center gap-2 text-[.64rem] font-bold uppercase tracking-[.12em] text-[hsl(var(--primary))]">Placeholder article <ArrowRight size={13} /></span></article>)}</div></div></section>;
 }
 
-function ConsultationForm({ selectedMatter, onSubmitted }: { selectedMatter: string; onSubmitted: () => void }) {
+function ConsultationForm({ selectedMatter, onSubmitted }: { selectedMatter: string; onSubmitted: (details: EnquiryDetails) => void }) {
   const [form, setForm] = useState({ name: '', phone: '', email: '', matter: selectedMatter || '', description: '', contact: 'Phone' });
   const [error, setError] = useState('');
   useEffect(() => { if (selectedMatter) setForm((current) => ({ ...current, matter: selectedMatter })); }, [selectedMatter]);
@@ -261,7 +294,14 @@ function ConsultationForm({ selectedMatter, onSubmitted }: { selectedMatter: str
     event.preventDefault();
     if (!form.name.trim() || !form.phone.trim() || !form.matter || !form.description.trim()) { setError('Please complete your name, phone number, matter and a brief description.'); return; }
     setError('');
-    onSubmitted();
+    onSubmitted({
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      email: form.email.trim(),
+      matter: form.matter,
+      description: form.description.trim(),
+      contact: form.contact,
+    });
   };
   return <section id="consultation" className="scroll-mt-20 bg-[hsl(var(--primary))] py-24 text-[hsl(var(--background))] lg:py-32"><div className="section-wrap grid gap-14 lg:grid-cols-[.75fr_1.25fr] lg:gap-24"><div><SectionLabel>Private first conversation</SectionLabel><h2 className="font-display text-5xl leading-[.95] md:text-7xl">Request a<br /><em className="text-[hsl(var(--accent))]">consultation.</em></h2><p className="mt-7 max-w-sm text-sm leading-6 text-[hsl(var(--background)/.62)]">Tell us a little about your legal concern. Consultations are by prior appointment.</p><div className="mt-10 border-l border-[hsl(var(--accent))] pl-5 text-xs leading-6 text-[hsl(var(--background)/.58)]"><LockKeyhole size={16} className="mb-2 text-[hsl(var(--accent))]" />Please do not submit confidential or highly sensitive documents through this initial enquiry form. Detailed documents can be discussed or shared through an appropriate channel after consultation.</div></div><div className="bg-[hsl(var(--background))] p-6 text-[hsl(var(--primary))] sm:p-9">{form.matter && <div className="mb-6 flex items-center gap-2 border border-[hsl(var(--accent)/.5)] bg-[hsl(var(--accent)/.13)] px-4 py-3 text-xs"><Check size={15} className="text-[hsl(var(--accent))]" /> Matter selected: <strong>{form.matter}</strong></div>}<form onSubmit={submit} className="space-y-5" noValidate><div className="grid gap-5 sm:grid-cols-2"><label className="text-xs font-bold">Full Name *<input value={form.name} onChange={(e) => update('name', e.target.value)} className="mt-2 min-h-12 w-full border border-[hsl(var(--border))] bg-transparent px-3 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="input-full-name" /></label><label className="text-xs font-bold">Phone Number *<input type="tel" value={form.phone} onChange={(e) => update('phone', e.target.value)} className="mt-2 min-h-12 w-full border border-[hsl(var(--border))] bg-transparent px-3 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="input-phone" /></label></div><div className="grid gap-5 sm:grid-cols-2"><label className="text-xs font-bold">Email Address<input type="email" value={form.email} onChange={(e) => update('email', e.target.value)} className="mt-2 min-h-12 w-full border border-[hsl(var(--border))] bg-transparent px-3 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="input-email" /></label><label className="text-xs font-bold">Type of Legal Matter *<span className="relative mt-2 block"><select value={form.matter} onChange={(e) => update('matter', e.target.value)} className="min-h-12 w-full appearance-none border border-[hsl(var(--border))] bg-[hsl(var(--background))] px-3 pr-9 text-sm outline-none transition focus:border-[hsl(var(--accent))]" data-testid="select-legal-matter"><option value="">Select a matter</option>{matterOptions.map((matter) => <option key={matter} value={matter}>{matter}</option>)}</select><ChevronDown size={15} className="pointer-events-none absolute right-3 top-4" /></span></label></div><label className="block text-xs font-bold">Brief Description of Matter *<textarea value={form.description} onChange={(e) => update('description', e.target.value)} rows={5} placeholder="Share a short, non-confidential summary..." className="mt-2 w-full resize-y border border-[hsl(var(--border))] bg-transparent px-3 py-3 text-sm outline-none transition placeholder:text-[hsl(var(--muted-foreground))] focus:border-[hsl(var(--accent))]" data-testid="textarea-description" /></label><fieldset><legend className="text-xs font-bold">Preferred Contact Method</legend><div className="mt-3 flex flex-wrap gap-3">{['Phone', 'WhatsApp', 'Email'].map((option) => <label key={option} className="flex cursor-pointer items-center gap-2 text-sm"><input type="radio" name="contact" value={option} checked={form.contact === option} onChange={(e) => update('contact', e.target.value)} className="accent-[hsl(var(--accent))]" data-testid={`radio-contact-${option.toLowerCase()}`} />{option}</label>)}</div></fieldset>{error && <p className="border-l-2 border-red-700 px-3 py-2 text-xs text-red-800" role="alert" data-testid="status-form-error">{error}</p>}<button type="submit" className="inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[hsl(var(--primary))] px-5 text-sm font-bold text-[hsl(var(--background))] transition hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--primary))]" data-testid="button-submit-consultation">Request a Consultation <Send size={15} /></button><p className="text-center text-[.67rem] leading-5 text-[hsl(var(--muted-foreground))]">Submitting an enquiry does not by itself create an advocate-client relationship.</p></form></div></div></section>;
 }
